@@ -1766,3 +1766,57 @@ p {
     height: 90px;
     object-fit: contain;
 }
+
+/* ============================================
+   SUCCESS POPUP
+============================================ */
+
+.success-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+
+.success-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-popup-content {
+    width: min(100%, 450px);
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-secondary);
+    text-align: center;
+    box-shadow: var(--shadow-premium), var(--shadow-gold);
+    transform: translateY(20px) scale(0.95);
+    transition: 0.3s ease;
+}
+
+.success-popup.show .success-popup-content {
+    transform: translateY(0) scale(1);
+}
+
+.success-popup-content i {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--color-accent-primary);
+    font-size: 3.5rem;
+}
+
+.success-popup-content h3 {
+    margin-bottom: 0.75rem;
+}
+
+.success-popup-content p {
+    margin-bottom: 1.5rem;
+}

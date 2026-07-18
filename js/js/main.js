@@ -101,3 +101,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+// ============================================
+// CONTACT FORM SUCCESS POPUP
+// ============================================
+
+const contactForm = document.getElementById("contactForm");
+const successPopup = document.getElementById("successPopup");
+const closePopup = document.getElementById("closePopup");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+
+        try {
+
+            const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok) {
+
+                contactForm.reset();
+
+                successPopup.classList.add("show");
+
+            } else {
+
+                alert("Something went wrong. Please try again.");
+
+            }
+
+        } catch (error) {
+
+            alert("Something went wrong. Please try again.");
+
+        }
+
+    });
+}
+
+if (closePopup) {
+    closePopup.addEventListener("click", () => {
+        successPopup.classList.remove("show");
+    });
+}
